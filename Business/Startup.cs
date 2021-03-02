@@ -96,14 +96,12 @@ namespace Business
         /// <param name="services"></param> 
         public void ConfigureDevelopmentServices(IServiceCollection services)
         {
-
             ConfigureServices(services);
+
             services.AddTransient<IEntityExampleRepository, EntityExampleRepository>();
             services.AddTransient<ILogRepository, LogRepository>();
             services.AddTransient<ITranslateRepository, TranslateRepository>();
             services.AddTransient<ILanguageRepository, LanguageRepository>();
-
-
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IUserClaimRepository, UserClaimRepository>();
             services.AddTransient<IOperationClaimRepository, OperationClaimRepository>();
@@ -113,9 +111,6 @@ namespace Business
 
             services.AddDbContext<ProjectDbContext, DArchInMemory>(ServiceLifetime.Transient);
             services.AddSingleton<MongoDbContextBase, MongoDbContext>();
-
-
-
         }
         /// <summary>		
         /// This method gets called by the Staging
@@ -124,22 +119,20 @@ namespace Business
         public void ConfigureStagingServices(IServiceCollection services)
         {
             ConfigureServices(services);
+
             services.AddTransient<IEntityExampleRepository, EntityExampleRepository>();
             services.AddTransient<ILogRepository, LogRepository>();
             services.AddTransient<ITranslateRepository, TranslateRepository>();
             services.AddTransient<ILanguageRepository, LanguageRepository>();
-
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IUserClaimRepository, UserClaimRepository>();
             services.AddTransient<IOperationClaimRepository, OperationClaimRepository>();
             services.AddTransient<IGroupRepository, GroupRepository>();
             services.AddTransient<IGroupClaimRepository, GroupClaimRepository>();
             services.AddTransient<IUserGroupRepository, UserGroupRepository>();
+            
             services.AddDbContext<ProjectDbContext>();
-
             services.AddSingleton<MongoDbContextBase, MongoDbContext>();
-
-
         }
 
         /// <summary>
@@ -149,22 +142,19 @@ namespace Business
         public void ConfigureProductionServices(IServiceCollection services)
         {
             ConfigureServices(services);
+
             services.AddTransient<IEntityExampleRepository, EntityExampleRepository>();
             services.AddTransient<ILogRepository, LogRepository>();
             services.AddTransient<ITranslateRepository, TranslateRepository>();
             services.AddTransient<ILanguageRepository, LanguageRepository>();
-
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IUserClaimRepository, UserClaimRepository>();
             services.AddTransient<IOperationClaimRepository, OperationClaimRepository>();
             services.AddTransient<IGroupRepository, GroupRepository>();
             services.AddTransient<IGroupClaimRepository, GroupClaimRepository>();
-
-
+            
             services.AddDbContext<ProjectDbContext>();
-
             services.AddSingleton<MongoDbContextBase, MongoDbContext>();
-
         }
 
 
