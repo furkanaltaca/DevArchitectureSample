@@ -106,11 +106,13 @@ namespace WebAPI
             // By the way, we can construct with DI by taking type to avoid calling static methods in aspects.
             ServiceTool.ServiceProvider = app.ApplicationServices;
 
-
             var configurationManager = app.ApplicationServices.GetService<ConfigurationManager>();
             switch (configurationManager.Mode)
             {
                 case ApplicationMode.Development:
+                    app.UseDbFakeDataCreator();
+                    break;
+
                 case ApplicationMode.Profiling:
                 case ApplicationMode.Staging:
 
@@ -118,10 +120,7 @@ namespace WebAPI
                 case ApplicationMode.Production:
                     break;
             }
-            if (configurationManager.Mode == ApplicationMode.Development)
-            {
-                app.UseDbFakeDataCreator();
-            }
+
             app.UseDeveloperExceptionPage();
 
             app.ConfigureCustomExceptionMiddleware();
